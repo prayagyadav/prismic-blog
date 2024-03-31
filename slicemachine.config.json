@@ -1,6 +1,7 @@
 {
-  "libraries": ["./src/slices"],
-  "adapter": "@slicemachine/adapter-next",
+  "apiEndpoint": "https://blog-prayagyadav.cdn.prismic.io/api/v2",
   "repositoryName": "blog-prayagyadav",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": ["./src/slices"],
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
 }
