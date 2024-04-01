@@ -32,6 +32,7 @@ export default async function Index() {
       navigation={navigation}
       settings={settings}
     >
+
       <Bounded size="widest">
         <ul className="grid grid-cols-1 gap-16">
           {articles.map((article) => (
