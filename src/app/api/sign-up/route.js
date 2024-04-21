@@ -1,26 +1,42 @@
-export async function POST(request) {
-  // Get data submitted in request's form.
-  const form = await request.formData();
-  const formData = Object.fromEntries(form.entries());
+import fetch from 'fetch';
 
-  // Optional logging to see the responses in the command line where the
-  // Next.js app is running.
-  console.log(formData);
+export default async (req, res) => {
+  const { email } = req.body;
 
-  // Guard clause checks for email and returns early if it is not found.
-  if (!formData.email) {
-    // Sends a HTTP bad request error code.
-    return res.status(400).json({
-      error: "Email not found",
-    });
+  if (!email) {
+    return res.status(400).json({ error: 'Email is required' });
   }
-  // Here, you could send the email address to a service like Mailchimp to
-  // manage your mailing list.
-  //
-  // This is just an example, so we won't do anything except redirect back to
-  // the homepage.
-  return new Response("Homepage redirect", {
-    status: 302,
-    headers: { Location: "/" },
-  });
-}
+
+  try {
+    const LIST_ID = process.env.MAILCHIMP_LIST_ID;
+    const API_KEY = process.env.MAILCHIMP_API_KEY;
+    const DATACENTER = API_KEY.split('-')[1];
+
+    const data = {
+      email_address: email,
+      status: 'subscribed'
+    };
+
+    const response = await fetch(
+      `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
+      {
+        body: JSON.stringify(data),
+        headers: {
+          Authorization: `apikey ${API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }
+    );
+
+    if (response.status >= 400) {
+      return res.status(400).json({
+        error: `There was an error subscribing to the newsletter. Shoot me an email at [me@leerob.io] and I'll add you to the list.`
+      });
+    }
+
+    return res.status(201).json({ error: '' });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || error.toString() });
+  }
+};

@@ -1,18 +1,52 @@
+'use client'
+
 import Link from "next/link";
 import { PrismicText } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
-
 import { Bounded } from "./Bounded";
 import { Heading } from "./Heading";
 import { HorizontalDivider } from "./HorizontalDivider";
 import { PrismicRichText } from "./PrismicRichText";
+import React, { useRef, useState } from 'react';
 
-function SignUpForm({ settings }) {
+function SignUpForm({ settings}) {
+    // 1. Create a reference to the input so we can fetch/clear it's value.
+    const inputEl = useRef(null);
+    // 2. Hold a message in state to handle the response from our API.
+    const [message, setMessage] = useState('');
+  
+    const subscribe = async (e) => {
+      e.preventDefault();
+  
+      // 3. Send a request to our API with the user's email address.
+      const res = await fetch('/api/subscribe', {
+        body: JSON.stringify({
+          email: inputEl.current.value,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      });
+  
+      // const { error } = await res.json();
+  
+      // if (error) {
+      //   // 4. If there was an error, update the message in state.
+      //   setMessage(error);
+  
+      //   return;
+      // }
+  
+      // 5. Clear the input value and show a success message.
+      inputEl.current.value = '';
+      setMessage('Success! 🎉 You are now subscribed.');
+    };
+  
   return (
     <div className="px-4">
       <form
-        action="/api/sign-up"
-        method="post"
+        onSubmit={subscribe}
         className="grid w-full max-w-xl grid-cols-1 gap-6"
       >
         {prismic.isFilled.richText(settings.data.newsletterDisclaimer) && (
@@ -34,11 +68,13 @@ function SignUpForm({ settings }) {
         )}
         <div className="grid grid-cols-1 gap-2">
           <div className="relative">
-            <label>
+            <label htmlFor="email-input">
               <span className="sr-only">Email address</span>
               <input
+                id="email-input"
                 name="email"
                 type="email"
+                ref={inputEl}
                 placeholder="jane.doe@example.com"
                 required={true}
                 className="w-full rounded-none border-b border-slate-200 py-3 pl-3 pr-10 text-slate-800 placeholder-slate-400"
@@ -57,6 +93,11 @@ function SignUpForm({ settings }) {
               <PrismicText field={settings.data.newsletterDisclaimer} />
             </p>
           )}
+        </div>
+        <div>
+          <p className="text-center text-xs tracking-tight text-slate-500">
+            {message}
+          </p>
         </div>
       </form>
     </div>
