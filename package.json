@@ -15,7 +15,6 @@
     "gen": "prismic-ts-codegen"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@prismicio/client": "^7.4.0",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.4",
@@ -24,8 +23,10 @@
     "isomorphic-fetch": "^3.0.0",
     "isomorphic-unfetch": "^3.1.0",
     "next": "^14.0.1",
+    "prismic": "^0.0.1",
     "prismic-javascript": "^3.0.2",
     "prismic-reactjs": "^1.3.4",
+    "prismic.io": "^3.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "unfetch": "^5.0.0"
@@ -43,11 +44,5 @@
     "prettier-plugin-tailwindcss": "^0.5.6",
     "slice-machine-ui": "^1.26.0",
     "tailwindcss": "^3.3.5"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/unfetch.mjs",
-      "default": "./dist/unfetch.js"
-    }
   }
 }

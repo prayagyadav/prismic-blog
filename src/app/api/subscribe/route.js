@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from "next/server";
-const fetch = require('isomorphic-unfetch')
-
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   const email  = req.body;
