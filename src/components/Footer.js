@@ -17,7 +17,8 @@ function SignUpForm({ settings}) {
   
     const subscribe = async (e) => {
       e.preventDefault();
-  
+      
+      console.log("Current Input:",inputEl.current.value)
       // 3. Send a request to our API with the user's email address.
       const res = await fetch('/api/subscribe', {
         body: JSON.stringify({
@@ -28,16 +29,19 @@ function SignUpForm({ settings}) {
         },
         method: 'POST',
       });
+      
+
+      const { error } = await res.json();
   
-      // const { error } = await res.json();
+      if (error) {
+        // 4. If there was an error, update the message in state.
+        setMessage(error);
   
-      // if (error) {
-      //   // 4. If there was an error, update the message in state.
-      //   setMessage(error);
-  
-      //   return;
-      // }
-  
+        return;
+      }
+      console.log("Response:")
+      console.log("Email:",res.body.current)
+      console.log("Status:",res.status)
       // 5. Clear the input value and show a success message.
       inputEl.current.value = '';
       setMessage('Success! 🎉 You are now subscribed.');

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server"
+import fetch from "isomorphic-fetch"
 
-export async function POST(req, res) {
+export async function POST(req) {
   const email = req.body
 
   if (!email) {
-    // return res.status(400).json({ error: 'Email is required' });
     return NextResponse.json({ error: "Email is required" }, { status: 500 })
   }
 
@@ -12,6 +12,8 @@ export async function POST(req, res) {
     const LIST_ID = process.env.MAILCHIMP_LIST_ID
     const API_KEY = process.env.MAILCHIMP_API_KEY
     const DATACENTER = API_KEY.split("-")[1]
+
+    console.log(email)
 
     const data = {
       email_address: email,
