@@ -115,10 +115,11 @@ export function Footer({ withSignUpForm = true, settings }) {
         <HorizontalDivider />
         {withSignUpForm && <SignUpForm settings={settings} />}
         <div className="mx-auto w-full max-w-3xl text-center text-xs font-semibold tracking-tight text-slate-500">
-          Proudly published using{" "}
+          {/* Proudly published using{" "}
           <Link href="https://prismic.io" className="text-slate-700">
             Prismic
-          </Link>
+          </Link> */}
+          &copy; 2024 | <Link href="https://www.prayagyadav.me">Prayag Yadav</Link>
         </div>
       </div>
     </Bounded>
