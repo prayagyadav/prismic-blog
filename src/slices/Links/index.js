@@ -12,7 +12,7 @@ const Links = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="flex justify-center items-center text-center underline"><PrismicNextLink field={slice.primary.link}><PrismicRichText field={slice.primary.linktext} /></PrismicNextLink></div>
+      <div className="text-center underline"><PrismicNextLink field={slice.primary.link}><PrismicRichText field={slice.primary.linktext} /></PrismicNextLink></div>
     </section>
   );
 };

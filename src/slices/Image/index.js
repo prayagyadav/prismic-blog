@@ -8,7 +8,7 @@ const Image = ({ slice }) => {
   const image = slice.primary.image;
 
   return (
-    <Bounded as="section" size={slice.variation === "wide" ? "widest" : "base"}>
+    <Bounded as="section" size={slice.variation === "wide" ? "widest" : (slice.variation === "small" ? "small" : "base")}>
       <figure className="grid grid-cols-1 gap-4">
         {prismic.isFilled.image(image) && (
           <div className="bg-gray-100">

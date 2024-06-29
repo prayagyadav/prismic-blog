@@ -445,9 +445,47 @@ export type ImageSliceWide = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Image → Primary*
+ */
+export interface ImageSliceSmallPrimary {
+  /**
+   * Image field in *Image → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *Image → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Optional - Caption under the image
+   * - **API ID Path**: image.primary.caption
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  caption: prismic.RichTextField;
+}
+
+/**
+ * Small variation for Image Slice
+ *
+ * - **API ID**: `small`
+ * - **Description**: Image
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliceSmall = prismic.SharedSliceVariation<
+  "small",
+  Simplify<ImageSliceSmallPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Image*
  */
-type ImageSliceVariation = ImageSliceDefault | ImageSliceWide;
+type ImageSliceVariation = ImageSliceDefault | ImageSliceWide | ImageSliceSmall;
 
 /**
  * Image Shared Slice
@@ -722,9 +760,11 @@ declare module "@prismicio/client" {
       ImageSlice,
       ImageSliceDefaultPrimary,
       ImageSliceWidePrimary,
+      ImageSliceSmallPrimary,
       ImageSliceVariation,
       ImageSliceDefault,
       ImageSliceWide,
+      ImageSliceSmall,
       LinksSlice,
       LinksSliceDefaultPrimary,
       LinksSliceVariation,
