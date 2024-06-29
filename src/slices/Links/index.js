@@ -3,13 +3,15 @@
  * @typedef {import("@prismicio/react").SliceComponentProps<LinksSlice>} LinksProps
  * @param {LinksProps}
  */
+import { PrismicNextLink } from "@prismicio/next";
+
 const Links = ({ slice }) => {
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for links (variation: {slice.variation}) Slices
+      <div className="flex justify-center items-center text-center underline"><PrismicNextLink field={slice.primary.link}>Link</PrismicNextLink></div>
     </section>
   );
 };

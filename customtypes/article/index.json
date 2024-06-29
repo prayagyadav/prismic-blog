@@ -54,9 +54,6 @@
             "links": {
               "type": "SharedSlice"
             },
-            "hyperlink": {
-              "type": "SharedSlice"
-            },
             "image": {
               "type": "SharedSlice"
             },

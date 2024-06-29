@@ -9,7 +9,7 @@ const NewSlice = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for new_slice (variation: {slice.variation}) Slices
+      <div dangerouslySetInnerHTML={{ __html: slice.primary.embed.html }} />
     </section>
   );
 };

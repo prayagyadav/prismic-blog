@@ -8,7 +8,6 @@ type ArticleDocumentDataSlicesSlice =
   | NewSliceSlice
   | MediaLinkSlice
   | LinksSlice
-  | HyperlinkSlice
   | ImageSlice
   | QuoteSlice
   | TextSlice
@@ -182,7 +181,6 @@ type PageDocumentDataSlicesSlice =
   | NewSliceSlice
   | MediaLinkSlice
   | LinksSlice
-  | HyperlinkSlice
   | ImageSlice
   | QuoteSlice
   | TextSlice
@@ -368,51 +366,6 @@ type ContactFormSliceVariation = ContactFormSliceDefault;
 export type ContactFormSlice = prismic.SharedSlice<
   "contact_form",
   ContactFormSliceVariation
->;
-
-/**
- * Primary content in *Hyperlink → Items*
- */
-export interface HyperlinkSliceDefaultItem {
-  /**
-   * Hyperlink field in *Hyperlink → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hyperlink.items[].hyperlink
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  hyperlink: prismic.LinkField;
-}
-
-/**
- * Default variation for Hyperlink Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type HyperlinkSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  Simplify<HyperlinkSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Hyperlink*
- */
-type HyperlinkSliceVariation = HyperlinkSliceDefault;
-
-/**
- * Hyperlink Shared Slice
- *
- * - **API ID**: `hyperlink`
- * - **Description**: Hyperlink
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type HyperlinkSlice = prismic.SharedSlice<
-  "hyperlink",
-  HyperlinkSliceVariation
 >;
 
 /**
@@ -756,10 +709,6 @@ declare module "@prismicio/client" {
       ContactFormSlice,
       ContactFormSliceVariation,
       ContactFormSliceDefault,
-      HyperlinkSlice,
-      HyperlinkSliceDefaultItem,
-      HyperlinkSliceVariation,
-      HyperlinkSliceDefault,
       ImageSlice,
       ImageSliceDefaultPrimary,
       ImageSliceWidePrimary,

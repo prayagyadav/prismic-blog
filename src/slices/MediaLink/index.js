@@ -3,13 +3,14 @@
  * @typedef {import("@prismicio/react").SliceComponentProps<MediaLinkSlice>} MediaLinkProps
  * @param {MediaLinkProps}
  */
+import { PrismicNextLink } from "@prismicio/next";
 const MediaLink = ({ slice }) => {
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for media_link (variation: {slice.variation}) Slices
+    <PrismicNextLink field={slice.primary.media_link}>Link</PrismicNextLink>
     </section>
   );
 };
