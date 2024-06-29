@@ -5,6 +5,10 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type ArticleDocumentDataSlicesSlice =
+  | NewSliceSlice
+  | MediaLinkSlice
+  | LinksSlice
+  | HyperlinkSlice
   | ImageSlice
   | QuoteSlice
   | TextSlice
@@ -175,6 +179,10 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | NewSliceSlice
+  | MediaLinkSlice
+  | LinksSlice
+  | HyperlinkSlice
   | ImageSlice
   | QuoteSlice
   | TextSlice
