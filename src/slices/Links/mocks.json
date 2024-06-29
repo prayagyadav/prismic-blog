@@ -9,6 +9,19 @@
 					"__TYPE__": "ExternalLink",
 					"url": "https://slicemachine.dev"
 				}
+			},
+			"linktext": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Example text ",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
 			}
 		},
 		"items": [

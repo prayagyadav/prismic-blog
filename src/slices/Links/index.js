@@ -4,6 +4,7 @@
  * @param {LinksProps}
  */
 import { PrismicNextLink } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 
 const Links = ({ slice }) => {
   return (
@@ -11,7 +12,7 @@ const Links = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="flex justify-center items-center text-center underline"><PrismicNextLink field={slice.primary.link}>Link</PrismicNextLink></div>
+      <div className="flex justify-center items-center text-center underline"><PrismicNextLink field={slice.primary.link}><PrismicRichText field={slice.primary.linktext} /></PrismicNextLink></div>
     </section>
   );
 };

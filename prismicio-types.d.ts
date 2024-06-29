@@ -471,6 +471,16 @@ export interface LinksSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
+
+  /**
+   * LinkText field in *Links → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: links.primary.linktext
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  linktext: prismic.RichTextField;
 }
 
 /**
