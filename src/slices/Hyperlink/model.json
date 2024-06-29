@@ -1,0 +1,27 @@
+{
+  "id": "hyperlink",
+  "type": "SharedSlice",
+  "name": "Hyperlink",
+  "description": "Hyperlink",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "hyperlink": {
+          "type": "Link",
+          "config": {
+            "label": "Hyperlink",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

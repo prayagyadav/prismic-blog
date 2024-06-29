@@ -1,0 +1,27 @@
+{
+  "id": "media_link",
+  "type": "SharedSlice",
+  "name": "MediaLink",
+  "description": "MediaLink",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "media_link": {
+          "type": "Link",
+          "config": {
+            "label": "Media Link",
+            "placeholder": "",
+            "select": "media"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

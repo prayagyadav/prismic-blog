@@ -363,6 +363,51 @@ export type ContactFormSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Hyperlink → Items*
+ */
+export interface HyperlinkSliceDefaultItem {
+  /**
+   * Hyperlink field in *Hyperlink → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hyperlink.items[].hyperlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  hyperlink: prismic.LinkField;
+}
+
+/**
+ * Default variation for Hyperlink Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HyperlinkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<HyperlinkSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Hyperlink*
+ */
+type HyperlinkSliceVariation = HyperlinkSliceDefault;
+
+/**
+ * Hyperlink Shared Slice
+ *
+ * - **API ID**: `hyperlink`
+ * - **Description**: Hyperlink
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HyperlinkSlice = prismic.SharedSlice<
+  "hyperlink",
+  HyperlinkSliceVariation
+>;
+
+/**
  * Primary content in *Image → Primary*
  */
 export interface ImageSliceDefaultPrimary {
@@ -495,6 +540,96 @@ type LinksSliceVariation = LinksSliceDefault;
 export type LinksSlice = prismic.SharedSlice<"links", LinksSliceVariation>;
 
 /**
+ * Primary content in *MediaLink → Primary*
+ */
+export interface MediaLinkSliceDefaultPrimary {
+  /**
+   * Media Link field in *MediaLink → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_link.primary.media_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  media_link: prismic.LinkToMediaField;
+}
+
+/**
+ * Default variation for MediaLink Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MediaLinkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MediaLinkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *MediaLink*
+ */
+type MediaLinkSliceVariation = MediaLinkSliceDefault;
+
+/**
+ * MediaLink Shared Slice
+ *
+ * - **API ID**: `media_link`
+ * - **Description**: MediaLink
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MediaLinkSlice = prismic.SharedSlice<
+  "media_link",
+  MediaLinkSliceVariation
+>;
+
+/**
+ * Primary content in *Embed → Primary*
+ */
+export interface NewSliceSliceDefaultPrimary {
+  /**
+   * Embed field in *Embed → Primary*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: new_slice.primary.embed
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  embed: prismic.EmbedField;
+}
+
+/**
+ * Default variation for Embed Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Embed*
+ */
+type NewSliceSliceVariation = NewSliceSliceDefault;
+
+/**
+ * Embed Shared Slice
+ *
+ * - **API ID**: `new_slice`
+ * - **Description**: NewSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewSliceSlice = prismic.SharedSlice<
+  "new_slice",
+  NewSliceSliceVariation
+>;
+
+/**
  * Primary content in *Quote → Primary*
  */
 export interface QuoteSliceDefaultPrimary {
@@ -613,6 +748,10 @@ declare module "@prismicio/client" {
       ContactFormSlice,
       ContactFormSliceVariation,
       ContactFormSliceDefault,
+      HyperlinkSlice,
+      HyperlinkSliceDefaultItem,
+      HyperlinkSliceVariation,
+      HyperlinkSliceDefault,
       ImageSlice,
       ImageSliceDefaultPrimary,
       ImageSliceWidePrimary,
@@ -623,6 +762,14 @@ declare module "@prismicio/client" {
       LinksSliceDefaultPrimary,
       LinksSliceVariation,
       LinksSliceDefault,
+      MediaLinkSlice,
+      MediaLinkSliceDefaultPrimary,
+      MediaLinkSliceVariation,
+      MediaLinkSliceDefault,
+      NewSliceSlice,
+      NewSliceSliceDefaultPrimary,
+      NewSliceSliceVariation,
+      NewSliceSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,
