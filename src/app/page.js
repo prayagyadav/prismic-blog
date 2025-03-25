@@ -5,6 +5,15 @@ import { Layout } from "@/components/Layout";
 import { Bounded } from "@/components/Bounded";
 import { Article } from "@/components/Article";
 
+
+export async function generateStaticParams() {
+  return [
+    { slug: 'example1' },
+    { slug: 'example2' },
+  ];
+}
+
+
 export async function generateMetadata() {
   const client = createClient();
   const settings = await client.getSingle("settings");
